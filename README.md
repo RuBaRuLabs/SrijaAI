@@ -11,11 +11,11 @@ Tired of playing guessing games with content trends?
 > **_It’s your personal content strategist, growth hacker, and trend-spotter rolled into one._**
 
 
-## Project Scope
+## 🛠️ Project Scope
 To build a decentralized, AI-powered co-pilot that assists creators and influencers in optimizing their content strategy by offering **real-time trend analysis, engagement predictions, and personalized recommendations**. The system will suggest what to post in the next 48 hours based on emerging trends, audience behavior, and predicted virality score.
 
 
-## Vision
+## 🚀 Vision
 Empower every creator with intelligent, transparent, and decentralized tools to maximize their creative impact and grow their influence - autonomously, insightfully, and at scale.
 
 ### Empower every creator to:
@@ -24,7 +24,7 @@ Use AI co-pilots to strategize, not just generate.
 We envision a creator-owned AI stack that predicts what’s next while protecting user data and enabling platform independence.
 
 
-## Mission
+## 🎯 Mission
 To develop an AI-driven media assistant that:  
 - Continuously analyzes global/local and niche content trends across platforms(Web2/Web3).  
 - Predicts content performance through a Virality Factor Score(VFS).  
