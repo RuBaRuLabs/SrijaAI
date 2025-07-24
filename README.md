@@ -25,8 +25,8 @@ We envision a creator-owned AI stack that predicts what’s next while protectin
 
 
 ## Mission
-- To develop an AI-driven media assistant that:  
-- Continuously analyzes global/local and niche content trends.  
+To develop an AI-driven media assistant that:  
+- Continuously analyzes global/local and niche content trends across platforms(Web2/Web3).  
 - Predicts content performance through a Virality Factor Score(VFS).  
 - Recommends highly engaging, trend-aligned post ideas tailored to each creator’s niche/brand.  
 - Helps creators make smarter, data-backed content decisions - without compromising privacy or control.
