@@ -1,13 +1,13 @@
 <img width="256" alt="srijaLogo" src="https://github.com/user-attachments/assets/8a036b9a-3adf-4aec-aab2-90400b29c7c3" />
 
-# SrijaAi - Your AI Co-Creator for the Next Trending Hit.
+# SrijaAI - Your AI Co-Creator for the Next Trending Hit.
 
 The AI-powered, decentralized media brain for modern creators/influencers who want to **predict virality, optimize content, and drive real engagement** - all while staying in control of their data and brand. It’s their personal content strategist, growth hacker, and trend-spotter rolled into one.
 
 
 ## Overview
 Tired of playing guessing games with content trends?
-**Meet SrijaAi**, the AI-powered, decentralized media brain for modern creators and influencers who want to **predict virality, plan and optimise content, and drive real engagement**. All while staying fully in control of their data and brand.
+**Meet SrijaAI**, the AI-powered, decentralized media brain for modern creators and influencers who want to **predict virality, plan and optimise content, and drive real engagement**. All while staying fully in control of their data and brand.
 > **_It’s your personal content strategist, growth hacker, and trend-spotter rolled into one._**
 
 
