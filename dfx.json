@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "srija_backend": {
+      "main": "src/srija_backend/main.mo",
+      "type": "motoko"
+    },
+    "srija_frontend": {
+      "dependencies": [
+        "srija_backend"
+      ],
+      "source": [
+        "src/srija_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "srija_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
