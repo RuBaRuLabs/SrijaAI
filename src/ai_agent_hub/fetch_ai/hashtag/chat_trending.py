@@ -1,9 +1,13 @@
 import base64
 import os
 import requests
+import re
+from collections import OrderedDict
+from collections import defaultdict
 from uuid import uuid4
 from datetime import datetime
 from pydantic.v1 import UUID4
+from typing import Dict, List
 
 from uagents import Context, Protocol
 from uagents_core.contrib.protocols.chat import (
@@ -85,14 +89,21 @@ async def handle_message(ctx: Context, sender: str, msg: ChatMessage):
             try:
                 await ctx.send(sender, create_text_chat("Awesome! You’re searching for the latest trending hashtags in the "+prompt+" niche. Please wait while we generate your results..."))
                 
-                hashtags = get_trending_fashion_hashtags(prompt)
+                hashtags = get_trending_fashion_hashtags(ctx, prompt)
                 #output = generate_html(hashtags);
                 output = ' '.join(hashtags)
+
                     
                 ctx.logger.info(f"Asset permissions set to: {sender}")
                 ctx.logger.info(f"hashtags: {output}")
-                await ctx.send(sender, create_text_chat("Here are the top trending hashtags in the "+prompt+" niche —ideal for Instagram, TikTok, and other social media platforms:"))
-                await ctx.send(sender, create_text_chat(output))
+
+                message = f"Here are the top trending hashtags for "+prompt+" - ideal for Instagram, TikTok, and other social media platforms:"
+                results = extract_hashtags_scores(output)
+                ctx.logger.info(f"results: {results}")
+                formatted_output = results_to_markdown(results, message)
+                ctx.logger.info(f"output: {formatted_output}")
+
+                await ctx.send(sender, create_text_chat(formatted_output))
 
             except Exception as err:
                 ctx.logger.error(err)
@@ -108,6 +119,41 @@ async def handle_message(ctx: Context, sender: str, msg: ChatMessage):
 
         else:
             ctx.logger.info(f"Got unexpected content from {sender}")
+
+
+def extract_hashtags_scores(text: str):
+    # Split cleanly by platform name followed by a colon
+    platform_pattern = re.compile(r"(Twitter/X|Instagram|TikTok):", re.IGNORECASE)
+    hashtag_pattern = re.compile(r"(#\w+)\s*\((\d+(?:\.\d+)?/10)\)")
+
+    results = defaultdict(list)
+
+    # Find all platform matches with their positions
+    matches = list(platform_pattern.finditer(text))
+    for i, match in enumerate(matches):
+        platform = match.group(1).strip()
+        start = match.end()
+        end = matches[i+1].start() if i+1 < len(matches) else len(text)
+        section_text = text[start:end].strip()
+
+        for tag, score in hashtag_pattern.findall(section_text):
+            results[platform].append({
+                "hashtag": tag,
+                "virality_score": score
+            })
+
+    return dict(results)
+    
+
+def results_to_markdown(results: dict, initial_msg: str) -> str:
+    lines = []
+    lines.append(f"### {initial_msg}")
+    for platform, hashtags in results.items():
+        lines.append(f"### {platform}")
+        for item in hashtags:
+            lines.append(f"- **{item['hashtag']}** → Virality Score : {item['virality_score']}")
+        lines.append("")
+    return "\n".join(lines)
 
 
 def generate_html(hashtags):
